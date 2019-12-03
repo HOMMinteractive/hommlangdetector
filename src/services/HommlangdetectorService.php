@@ -67,7 +67,11 @@ class HommlangdetectorService extends Component
 	 public function getBrowserLang()
     {
 	   
-		$lang = $this->multiexplode(array("-",",",";"),$_SERVER['HTTP_ACCEPT_LANGUAGE']);
+		  if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+           $lang = $this->multiexplode(array("-",",",";"),$_SERVER['HTTP_ACCEPT_LANGUAGE']);
+       }else{
+	    $lang = ['de'];
+       }
 		$sites = $this->getAllSites();
 		
 		$handle = '';
